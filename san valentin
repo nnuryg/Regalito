@@ -1,0 +1,53 @@
+import turtle
+import time
+
+# Configuración de la pantalla
+screen = turtle.Screen()
+screen.bgcolor("white")
+screen.title("San Valentín ❤️")
+
+# Función para dibujar una flor
+def draw_flower(x, y, color):
+    flower = turtle.Turtle()
+    flower.speed(10)
+    flower.color(color)
+    flower.penup()
+    flower.goto(x, y)
+    flower.pendown()
+    
+    for _ in range(6):  # Dibuja los pétalos
+        flower.circle(20, 180)
+        flower.right(120)
+    
+    flower.penup()
+    flower.goto(x, y - 30)
+    flower.pendown()
+    flower.color("green")
+    flower.right(90)
+    flower.forward(50)  # Tallo
+    
+    flower.hideturtle()
+
+# Función para mostrar texto en pantalla
+def show_message(text, x, y, font_size=24, color="red"):
+    message = turtle.Turtle()
+    message.hideturtle()
+    message.penup()
+    message.goto(x, y)
+    message.color(color)
+    message.write(text, align="center", font=("Arial", font_size, "bold"))
+
+# Dibujar flores en diferentes posiciones
+positions = [(-150, -50), (0, 0), (150, -50)]
+colors = ["pink", "purple", "red"]
+
+for i in range(3):
+    draw_flower(positions[i][0], positions[i][1], colors[i])
+
+# Mostrar los mensajes después de unos segundos
+time.sleep(2)
+show_message("Te amo ❤️", 0, 150, 30)
+time.sleep(2)
+show_message("¿Quieres ser mi San Valentín?", 0, 100, 20)
+
+turtle.done()
